@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BobaShopApi.Models;
 using BobaShopApi.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace BobaShopApi.Controllers
 {
