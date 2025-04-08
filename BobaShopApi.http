@@ -1,0 +1,6 @@
+@BobaShopApi_HostAddress = http://localhost:5278
+
+GET {{BobaShopApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
