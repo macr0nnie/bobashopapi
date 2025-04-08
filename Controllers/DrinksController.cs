@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using BobaShopApi.Models;
+using BobaShopApi.Data;
 
 namespace BobaShopApi.Controllers
 {
@@ -7,31 +9,64 @@ namespace BobaShopApi.Controllers
     [Route("api/[controller]")]
     public class DrinksController : ControllerBase
     {
-        private static List<Drink> Drinks = new List<Drink>
+        private readonly BobaShopContext _context;
+
+        public DrinksController(BobaShopContext context)
         {
-            new Drink { Id = 1, Name = "Classic Milk Tea", Price = 3.50m },
-            new Drink { Id = 2, Name = "Taro Milk Tea", Price = 4.00m },
-            new Drink { Id = 3, Name = "Matcha Latte", Price = 4.50m },
-            new Drink { Id = 4, Name = "Mango Smoothie", Price = 5.00m },
-            new Drink { Id = 5, Name = "Strawberry Lemonade", Price = 3.75m },
-            new Drink { Id = 6, Name = "Peach Oolong Tea", Price = 4.25m }
-        };
+            _context = context;
+        }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Drink>> GetAllDrinks()
+        public async Task<ActionResult<IEnumerable<Drink>>> GetAllDrinks()
         {
-            return Ok(Drinks);
+            return await _context.Drinks.ToListAsync();
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Drink> GetDrinkById(int id)
+        public async Task<ActionResult<Drink>> GetDrinkById(int id)
         {
-            var drink = Drinks.FirstOrDefault(d => d.Id == id);
+            var drink = await _context.Drinks.FindAsync(id);
             if (drink == null)
             {
                 return NotFound();
             }
             return Ok(drink);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<Drink>> CreateDrink([FromBody] Drink newDrink)
+        {
+            if (newDrink == null || string.IsNullOrEmpty(newDrink.Name) || newDrink.Price <= 0)
+            {
+                return BadRequest("Invalid drink data.");
+            }
+
+            _context.Drinks.Add(newDrink);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetDrinkById), new { id = newDrink.Id }, newDrink);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult<Drink>> UpdateDrink(int id, [FromBody] Drink updatedDrink)
+        {
+            if (updatedDrink == null || string.IsNullOrEmpty(updatedDrink.Name) || updatedDrink.Price <= 0)
+            {
+                return BadRequest("Invalid drink data.");
+            }
+
+            var existingDrink = await _context.Drinks.FindAsync(id);
+            if (existingDrink == null)
+            {
+                return NotFound();
+            }
+
+            existingDrink.Name = updatedDrink.Name;
+            existingDrink.Price = updatedDrink.Price;
+
+            await _context.SaveChangesAsync();
+
+            return Ok(existingDrink);
         }
     }
 }
