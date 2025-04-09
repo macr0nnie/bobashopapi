@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BobaShopApi.Models;
 using BobaShopApi.Data;
-using Microsoft.EntityFrameworkCore;
+
 
 namespace BobaShopApi.Controllers
 {
@@ -11,16 +11,17 @@ namespace BobaShopApi.Controllers
     public class DrinksController : ControllerBase
     {
         private readonly BobaShopContext _context;
-
+        //contructor getting a reference from the db context
         public DrinksController(BobaShopContext context)
         {
             _context = context;
         }
-
+        
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Drink>>> GetAllDrinks()
         {
-            return await _context.Drinks.ToListAsync();
+            return await _context.Drinks.ToListAsync(); //all drinks
+
         }
 
         [HttpGet("{id}")]
