@@ -1,8 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 namespace BobaShopApi;
 
-
-public class ProductsController
+[ApiController]
+[Route("api/[controller]")]
+public class ProductsController: ControllerBase
 {
 
 }
