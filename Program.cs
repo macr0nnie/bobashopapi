@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using BobaShopApi.Data;
+using BobaShopApi.Repositories;
+
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers(); // ← Required for MVC controllers

@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
-using bobashopapi.Models;
-using bobashopapi.Data;
+using BobaShopApi.Repositories;
 namespace BobaShopApi;
 
 [ApiController]
 [Route("api/[controller]")]
+
 public class EmployeeController : ControllerBase
 {
     private readonly EmployeeRepository _employeeRepository;
@@ -13,5 +13,9 @@ public class EmployeeController : ControllerBase
     {
         _employeeRepository = employeeRepository;
     }
+    
+
+
+    
     
 }
