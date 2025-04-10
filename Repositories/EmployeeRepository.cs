@@ -17,11 +17,11 @@ namespace BobaShopApi.Repositories
         public IEnumerable<Employee> GetALL()
         {
             
+            return _context.Employees.ToList();
         }
         public Employee GetID(int id)
         {
-            
-;
+            return _context.Employees.Find(id);
         }
         public void AddEmployee(Employee employee)
         {
@@ -43,6 +43,10 @@ namespace BobaShopApi.Repositories
                 _context.SaveChanges();
             }
         }
-    
+
+        public IEnumerable<Employee> GetALlEmployees()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
