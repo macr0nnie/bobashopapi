@@ -9,7 +9,7 @@ namespace BobaShopApi.Data
 
         // Define a DbSet for each model you want to map to a database table
         public DbSet<Drink> Drinks { get; set; }
-        public DbSet<Employee> Employees { get; set; }
+     
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -23,13 +23,6 @@ namespace BobaShopApi.Data
                 new Drink { Id = 5, Name = "Strawberry Lemonade", Price = 3.75m }
             );
 
-            modelBuilder.Entity<Employee>().HasData(
-                new Employee { Id = 1, Name = "Alice", Department = "Sales" },
-                new Employee { Id = 2, Name = "Bob", Department = "Marketing" },
-                new Employee { Id = 3, Name = "Charlie", Department = "Operations" },
-                new Employee { Id = 4, Name = "David", Department = "HR" },
-                new Employee { Id = 5, Name = "Eve", Department = "Finance" }
-            );
         }
     }
 }
