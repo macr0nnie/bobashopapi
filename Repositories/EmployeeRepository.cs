@@ -3,7 +3,6 @@ using BobaShopApi.Models;
 using Microsoft.EntityFrameworkCore;
 namespace BobaShopApi.Repositories
 {
-
     public class EmployeeRepository : IEmployeeRepository
     {
         private readonly BobaShopContext _context;
