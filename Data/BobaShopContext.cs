@@ -6,14 +6,10 @@ namespace BobaShopApi.Data
     public class BobaShopContext : DbContext
     {
         public BobaShopContext(DbContextOptions<BobaShopContext> options) : base(options) { }
-
         // Define a DbSet for each model you want to map to a database table
         public DbSet<Drink> Drinks { get; set; }
         public DbSet<Order> Orders { get; set; }
-     
-
         public DbSet<Employee> Employees { get; set; }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder); //what is this for?
@@ -25,6 +21,11 @@ namespace BobaShopApi.Data
                 new Drink { Id = 4, Name = "Mango Smoothie", Price = 5.00m },
                 new Drink { Id = 5, Name = "Strawberry Lemonade", Price = 3.75m }
             );
+            modelBuilder.Entity<Employee>().HasData(
+                new Employee { Id = 1, Name = "John Doe", Position = "Barista", Salary = 30000, Shift = "Morning" },
+                new Employee { Id = 2, Name = "Jane Smith", Position = "Manager", Salary = 50000, Shift = "Evening" }
+            );
+     
         }
     }
 }

@@ -6,10 +6,14 @@ namespace BobaShopApi.Repositories
     public class EmployeeRepository : IEmployeeRepository
     {
         private readonly BobaShopContext _context;
-
-        public Task AddEmployeeAsync(Employee employee)
+        public EmployeeRepository(BobaShopContext context)
         {
-            throw new NotImplementedException();
+            _context = context ?? throw new ArgumentNullException(nameof(context));
+        }
+
+        public  Task AddEmployeeAsync(Employee employee)
+        {
+            return _context.Employees.FromSqlRaw($"EXEC {StoredProcedures.AddEmployee} @Name = {employee.Name}, @Position = {employee.Position}, @Salary = {employee.Salary}, @Shift = {employee.Shift}").ToListAsync();
         }
 
         public Task DeleteEmployeeAsync(int id)
@@ -18,12 +22,9 @@ namespace BobaShopApi.Repositories
         }
 
         public async Task<IEnumerable<Employee>> GetAllEmployeesAsync()
-        {
-            return await _context.Employees.FromSql($"EXEC{StoredProcedures.GetAllEmployees}").ToListAsync(); //all employees
-
-            //all employees
+        {  
+            return await _context.Employees.FromSqlRaw($"EXEC {StoredProcedures.GetAllEmployees}").ToListAsync();
         }
-
 
         public Task<Employee> GetEmployeeByIdAsync(int id)
         {
