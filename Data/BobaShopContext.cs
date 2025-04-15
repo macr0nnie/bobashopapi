@@ -9,7 +9,10 @@ namespace BobaShopApi.Data
 
         // Define a DbSet for each model you want to map to a database table
         public DbSet<Drink> Drinks { get; set; }
+        public DbSet<Order> Orders { get; set; }
      
+
+        public DbSet<Employee> Employees { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -22,7 +25,6 @@ namespace BobaShopApi.Data
                 new Drink { Id = 4, Name = "Mango Smoothie", Price = 5.00m },
                 new Drink { Id = 5, Name = "Strawberry Lemonade", Price = 3.75m }
             );
-
         }
     }
 }

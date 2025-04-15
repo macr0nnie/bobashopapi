@@ -9,7 +9,7 @@ builder.Services.AddSwaggerGen();
 //add the db connection
 builder.Services.AddDbContext<BobaShopContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-builder.Services.AddScoped<
+
 
 var app = builder.Build();
 
