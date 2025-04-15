@@ -7,10 +7,16 @@ namespace BobaShopApi.Controllers
     [Route("api/[controller]")]
     public class EmployeeController : ControllerBase
     {
-        private BobaShopContext _context;
-        public EmployeeController(BobaShopContext context)
+        private  readonly IEmployeeRepository _employeeRepository;
+        public EmployeeController(IEmployeeRepository employeeRepository)
         {
-            _context = context;
+            _employeeRepository = employeeRepository;
+        }
+         [HttpGet]
+        public async Task<IActionResult> GetAllEmployeesAsync()
+        {
+            var employees = await _employeeRepository.GetAllEmployeesAsync();
+            return Ok(employees);
         }
     
     }
