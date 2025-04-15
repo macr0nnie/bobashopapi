@@ -1,4 +1,5 @@
 using BobaShopApi.Models;
+namespace BobaShopApi.Repositories{
 public interface IEmployeeRepository
 {
     Task<IEnumerable<Employee>> GetAllEmployeesAsync();
@@ -6,4 +7,5 @@ public interface IEmployeeRepository
     Task AddEmployeeAsync(Employee employee);
     Task UpdateEmployeeAsync(Employee employee);
     Task DeleteEmployeeAsync(int id);
+}
 }

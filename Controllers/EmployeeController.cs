@@ -1,5 +1,6 @@
 using BobaShopApi.Data;
 using Microsoft.AspNetCore.Mvc;
+using BobaShopApi.Repositories;
 
 namespace BobaShopApi.Controllers
 {
