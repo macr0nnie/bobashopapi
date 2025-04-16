@@ -18,10 +18,10 @@ namespace BobaShopApi.Repositories
 
         public Task DeleteEmployeeAsync(int id)
         {
-            throw new NotImplementedException();
+            return _context.Employees.FromSqlRaw($"EXEC {StoredProcedures.DeleteEmployee} @Id = {id}").ToListAsync();
         }
 
-        public async Task<IEnumerable<Employee>> GetAllEmployeesAsync()
+        public async Task<List<Employee>> GetAllEmployeesAsync()
         {  
             return await _context.Employees.FromSqlRaw($"EXEC {StoredProcedures.GetAllEmployees}").ToListAsync();
         }

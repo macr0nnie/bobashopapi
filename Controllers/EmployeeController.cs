@@ -1,4 +1,3 @@
-using BobaShopApi.Data;
 using Microsoft.AspNetCore.Mvc;
 using BobaShopApi.Repositories;
 
@@ -19,7 +18,6 @@ namespace BobaShopApi.Controllers
             var employees = await _employeeRepository.GetAllEmployeesAsync();
             return Ok(employees);
         }
-    
     }
 
 }

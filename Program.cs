@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using BobaShopApi.Data;
 using BobaShopApi.Repositories;
+using BobaShopApi;
+using BobaShopApi.Models;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,13 +11,23 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+builder.Services.AddScoped<IDrinkRepository, DrinkRepository>();
 
 //add the db connection
 builder.Services.AddDbContext<BobaShopContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngular",
+        policy => policy.WithOrigins("http://localhost:4200") // Angular default port
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+});
 
 var app = builder.Build();
+
+app.UseCors("AllowAngular");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
