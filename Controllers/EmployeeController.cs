@@ -13,12 +13,14 @@ namespace BobaShopApi.Controllers
         {
             _employeeRepository = employeeRepository;
         }
+
         [HttpGet]
         public async Task<IActionResult> GetAllEmployeesAsync()
         {
             var employees = await _employeeRepository.GetAllEmployeesAsync();
             return Ok(employees);
         }
+        
         [HttpGet("{id}")]
         public async Task<IActionResult> GetEmployeeByIdAsync(int id)
         {
@@ -50,6 +52,18 @@ namespace BobaShopApi.Controllers
                 return NotFound();
             }
             await _employeeRepository.UpdateEmployeeAsync(employee);
+            return NoContent();
+        }
+        //delete employee
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteEmployeeAsync(int id)
+        {
+            var existingEmployee = await _employeeRepository.GetEmployeeByIdAsync(id);
+            if (existingEmployee == null)
+            {
+                return NotFound();
+            }
+            await _employeeRepository.DeleteEmployeeAsync(id);
             return NoContent();
         }
 

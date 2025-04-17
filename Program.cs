@@ -4,7 +4,6 @@ using BobaShopApi.Repositories;
 using BobaShopApi;
 using BobaShopApi.Models;
 
-
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers(); // ← Required for MVC controllers
 builder.Services.AddEndpointsApiExplorer();
@@ -13,15 +12,14 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddScoped<IDrinkRepository, DrinkRepository>();
 
-//add the db connection
+//db connection
 builder.Services.AddDbContext<BobaShopContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAngular",
-        policy => policy.WithOrigins("http://localhost:4200") // Angular default port
-                        .AllowAnyMethod()
+        policy => policy.WithOrigins("http://localhost:4200") 
                         .AllowAnyHeader());
 });
 

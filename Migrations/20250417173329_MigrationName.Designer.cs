@@ -4,6 +4,7 @@ using BobaShopApi.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BobaShopApi.Migrations
 {
     [DbContext(typeof(BobaShopContext))]
-    partial class BobaShopContextModelSnapshot : ModelSnapshot
+    [Migration("20250417173329_MigrationName")]
+    partial class MigrationName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -137,30 +140,6 @@ namespace BobaShopApi.Migrations
                             Position = "Supervisor",
                             Salary = 40000m,
                             Shift = "Evening"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Name = "Daisy White",
-                            Position = "Barista",
-                            Salary = 32000m,
-                            Shift = "Morning"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Name = "Shelly Jarskey",
-                            Position = "Lead Scientist",
-                            Salary = 5500000m,
-                            Shift = "Morning"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Name = "Creature Jarskey",
-                            Position = "Sad Intern",
-                            Salary = 10m,
-                            Shift = "Graveyard"
                         });
                 });
 
