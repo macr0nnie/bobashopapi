@@ -23,7 +23,10 @@ namespace BobaShopApi.Data
             );
             modelBuilder.Entity<Employee>().HasData(
                 new Employee { Id = 1, Name = "John Doe", Position = "Barista", Salary = 30000, Shift = "Morning" },
-                new Employee { Id = 2, Name = "Jane Smith", Position = "Manager", Salary = 50000, Shift = "Evening" }
+                new Employee { Id = 2, Name = "Jane Smith", Position = "Manager", Salary = 50000, Shift = "Evening" },
+                new Employee { Id = 3, Name = "Alice Johnson", Position = "Cashier", Salary = 25000, Shift = "Afternoon" },
+                new Employee { Id = 4, Name = "Bob Brown", Position = "Delivery", Salary = 28000, Shift = "Morning" },
+                new Employee { Id = 5, Name = "Charlie Green", Position = "Supervisor", Salary = 40000, Shift = "Evening" }
             );
      
         }

@@ -1,40 +1,52 @@
 using BobaShopApi.Data;
 using BobaShopApi.Models;
 using Microsoft.EntityFrameworkCore;
+
 namespace BobaShopApi.Repositories
 {
     public class EmployeeRepository : IEmployeeRepository
     {
         private readonly BobaShopContext _context;
+
         public EmployeeRepository(BobaShopContext context)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
-        public  Task AddEmployeeAsync(Employee employee)
+        public async Task AddEmployeeAsync(Employee employee)
         {
-            return _context.Employees.FromSqlRaw($"EXEC {StoredProcedures.AddEmployee} @Name = {employee.Name}, @Position = {employee.Position}, @Salary = {employee.Salary}, @Shift = {employee.Shift}").ToListAsync();
+            await _context.Database.ExecuteSqlInterpolatedAsync(
+                $"EXEC {StoredProcedures.AddEmployee} @Name = {employee.Name}, @Position = {employee.Position}, @Salary = {employee.Salary}, @Shift = {employee.Shift}");
         }
 
-        public Task DeleteEmployeeAsync(int id)
+        public async Task DeleteEmployeeAsync(int id)
         {
-            return _context.Employees.FromSqlRaw($"EXEC {StoredProcedures.DeleteEmployee} @Id = {id}").ToListAsync();
+            await _context.Database.ExecuteSqlInterpolatedAsync(
+                $"EXEC {StoredProcedures.DeleteEmployee} @Id = {id}");
         }
 
         public async Task<List<Employee>> GetAllEmployeesAsync()
-        {  
-            return await _context.Employees.FromSqlRaw($"EXEC {StoredProcedures.GetAllEmployees}").ToListAsync();
+        {
+            return await _context.Employees
+                .FromSqlRaw($"EXEC {StoredProcedures.GetAllEmployees}")
+                .ToListAsync();
         }
 
-        public Task<Employee> GetEmployeeByIdAsync(int id)
+       
+        public async Task<Employee?> GetEmployeeByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var employees = await _context.Employees
+                .FromSqlRaw("EXEC get_employee_by_id @Id = {0}", id)
+                .AsNoTracking()
+                .ToListAsync();
+
+            return employees.FirstOrDefault();
         }
 
-        public Task UpdateEmployeeAsync(Employee employee)
+        public async Task UpdateEmployeeAsync(Employee employee)
         {
-            throw new NotImplementedException();
+            await _context.Database.ExecuteSqlInterpolatedAsync(
+                $"EXEC {StoredProcedures.UpdateEmployee} @Id = {employee.Id}, @Name = {employee.Name}, @Position = {employee.Position}, @Salary = {employee.Salary}, @Shift = {employee.Shift}");
         }
     }
 }
-
