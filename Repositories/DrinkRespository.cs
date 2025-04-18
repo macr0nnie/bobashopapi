@@ -26,7 +26,7 @@ namespace BobaShopApi
         public Task AddDrinkAsync(Drink drink)
         {
             return _context.Drinks
-                .FromSqlRaw($"EXEC {StoredProcedures.AddDrink} @Name={drink.Name}, @Price={drink.Price}")
+                .FromSqlRaw($"EXEC {StoredProcedures.AddDrink} @Id = {drink.Id} , @Name={drink.Name}, @Price={drink.Price}")
                 .ToListAsync();
         }
 
