@@ -22,7 +22,6 @@ namespace BobaShopApi
         {
             return _context.Drinks.FromSqlRaw($"EXEC {StoredProcedures.GetDrinkById} @Id={id}").FirstOrDefaultAsync();
         }
-
         public Task AddDrinkAsync(Drink drink)
         {
             return _context.Drinks

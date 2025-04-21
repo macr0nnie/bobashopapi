@@ -30,9 +30,7 @@ namespace BobaShopApi.Repositories
             return await _context.Employees
                 .FromSqlRaw($"EXEC {StoredProcedures.GetAllEmployees}")
                 .ToListAsync();
-        }
-
-       
+        }       
         public async Task<Employee?> GetEmployeeByIdAsync(int id)
         {
             var employees = await _context.Employees
