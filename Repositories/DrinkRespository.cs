@@ -7,7 +7,6 @@ namespace BobaShopApi
     public class DrinkRepository : IDrinkRepository
     {
         private readonly BobaShopContext _context;
-
         //always include the dependency injection
         public DrinkRepository(BobaShopContext context)
         {
