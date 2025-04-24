@@ -6,6 +6,7 @@ namespace BobaShopApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+
     public class EmployeeController : ControllerBase
     {
         private readonly IEmployeeRepository _employeeRepository;
@@ -13,14 +14,13 @@ namespace BobaShopApi.Controllers
         {
             _employeeRepository = employeeRepository;
         }
-
         [HttpGet]
         public async Task<IActionResult> GetAllEmployeesAsync()
         {
             var employees = await _employeeRepository.GetAllEmployeesAsync();
             return Ok(employees);
         }
-        
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetEmployeeByIdAsync(int id)
         {
@@ -29,15 +29,18 @@ namespace BobaShopApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddEmployeeAsync([FromBody] Employee employee)
+    public async Task<IActionResult> AddEmployeeAsync([FromBody] Employee employee)
+    {
+        if (employee == null)
         {
-            if (employee == null)
-            {
-                return BadRequest("Employee cannot be null.");
-            }
-            await _employeeRepository.AddEmployeeAsync(employee);
-            return CreatedAtAction(nameof(GetEmployeeByIdAsync), new { id = employee.Id }, employee);
+            return BadRequest("Employee cannot be null.");
         }
+        await _employeeRepository.AddEmployeeAsync(employee);
+        return CreatedAtAction(
+            nameof(GetEmployeeByIdAsync),  // Action name
+            new { id = employee.Id },     // Route values
+            employee);                   // Created object
+    }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateEmployeeAsync(int id, [FromBody] Employee employee)
@@ -65,8 +68,6 @@ namespace BobaShopApi.Controllers
             }
             await _employeeRepository.DeleteEmployeeAsync(id);
             return NoContent();
-        }
-
+        } 
     }
-
-}
+    }

@@ -1,0 +1,213 @@
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+
+#nullable disable
+
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
+namespace BobaShopApi.Migrations
+{
+    /// <inheritdoc />
+    public partial class more_data : Migration
+    {
+        /// <inheritdoc />
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.AlterColumn<decimal>(
+                name: "Salary",
+                table: "Employees",
+                type: "decimal(18,2)",
+                nullable: true,
+                oldClrType: typeof(decimal),
+                oldType: "decimal(18,2)");
+
+            migrationBuilder.UpdateData(
+                table: "Employees",
+                keyColumn: "Id",
+                keyValue: 1,
+                columns: new[] { "Name", "Position", "Salary" },
+                values: new object[] { "Jojo Siwa", "Matcha Man", 10000m });
+
+            migrationBuilder.UpdateData(
+                table: "Employees",
+                keyColumn: "Id",
+                keyValue: 2,
+                columns: new[] { "Name", "Position", "Salary", "Shift" },
+                values: new object[] { "Bella", "Lawyer", 500000m, "Evening" });
+
+            migrationBuilder.UpdateData(
+                table: "Employees",
+                keyColumn: "Id",
+                keyValue: 3,
+                columns: new[] { "Name", "Position", "Salary", "Shift" },
+                values: new object[] { "Grayce Johnson", "Taster", 250000m, "Afternoon" });
+
+            migrationBuilder.InsertData(
+                table: "Employees",
+                columns: new[] { "Id", "Name", "Position", "Salary", "Shift" },
+                values: new object[,]
+                {
+                    { 4, "Cindy Cindy'sLastName", "Delivery", 28000m, "Morning" },
+                    { 5, "General Trab", "HR", 400000m, "Evening" },
+                    { 6, "Oliver JFK", "RadStreamer", 320000m, "Reasonable Hours" },
+                    { 7, "Shelly Jarsky", "Lead Scientist", 5500000m, "Morning" },
+                    { 8, "Creature Jarsky", "Sad Intern", 10m, "Graveyard" },
+                    { 9, "Numi Toffe", "Stay at Home Daughter", 5000m, "24/7" },
+                    { 10, "Tia", "Writer", 1000000m, "Evening" },
+                    { 11, "Lexi", "Vegan", 2000000m, "Morning" },
+                    { 12, "Jennifer Kanna", "Estition", 2000000m, "Morning" },
+                    { 13, "Josh", "Kanna's Assistant/Stay at Home Husband", 20m, "Morning" },
+                    { 14, "Yoni ", "Streamer", 200000000m, "Night" },
+                    { 15, "Lev", "Acedemic Weapon", 1000m, "Morning" },
+                    { 16, "Lochnessa", "Manager", 100000m, "Morning" },
+                    { 17, "Zoe Catluv7", "Marine Biologist", 100000m, "Morning" },
+                    { 18, "Esme", "Japanese", 100000m, "Morning" },
+                    { 19, "Barbie", "Being Hot", 10000000000m, "Morning" },
+                    { 20, "Megan", "Stuff", 100000m, "Morning" },
+                    { 21, "Alf", "Boba Maker", 50m, "Graveyard" },
+                    { 22, "Riley Catluv7", "Boba Music/Zoe's Pet", 30m, "Graveyard" },
+                    { 23, "Avery", "Professor", 300000m, "Morning" },
+                    { 24, "Megan Catluv7", "Boba Music/Zoe's Pet", 30m, "Graveyard" }
+                });
+        }
+
+        /// <inheritdoc />
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DeleteData(
+                table: "Employees",
+                keyColumn: "Id",
+                keyValue: 4);
+
+            migrationBuilder.DeleteData(
+                table: "Employees",
+                keyColumn: "Id",
+                keyValue: 5);
+
+            migrationBuilder.DeleteData(
+                table: "Employees",
+                keyColumn: "Id",
+                keyValue: 6);
+
+            migrationBuilder.DeleteData(
+                table: "Employees",
+                keyColumn: "Id",
+                keyValue: 7);
+
+            migrationBuilder.DeleteData(
+                table: "Employees",
+                keyColumn: "Id",
+                keyValue: 8);
+
+            migrationBuilder.DeleteData(
+                table: "Employees",
+                keyColumn: "Id",
+                keyValue: 9);
+
+            migrationBuilder.DeleteData(
+                table: "Employees",
+                keyColumn: "Id",
+                keyValue: 10);
+
+            migrationBuilder.DeleteData(
+                table: "Employees",
+                keyColumn: "Id",
+                keyValue: 11);
+
+            migrationBuilder.DeleteData(
+                table: "Employees",
+                keyColumn: "Id",
+                keyValue: 12);
+
+            migrationBuilder.DeleteData(
+                table: "Employees",
+                keyColumn: "Id",
+                keyValue: 13);
+
+            migrationBuilder.DeleteData(
+                table: "Employees",
+                keyColumn: "Id",
+                keyValue: 14);
+
+            migrationBuilder.DeleteData(
+                table: "Employees",
+                keyColumn: "Id",
+                keyValue: 15);
+
+            migrationBuilder.DeleteData(
+                table: "Employees",
+                keyColumn: "Id",
+                keyValue: 16);
+
+            migrationBuilder.DeleteData(
+                table: "Employees",
+                keyColumn: "Id",
+                keyValue: 17);
+
+            migrationBuilder.DeleteData(
+                table: "Employees",
+                keyColumn: "Id",
+                keyValue: 18);
+
+            migrationBuilder.DeleteData(
+                table: "Employees",
+                keyColumn: "Id",
+                keyValue: 19);
+
+            migrationBuilder.DeleteData(
+                table: "Employees",
+                keyColumn: "Id",
+                keyValue: 20);
+
+            migrationBuilder.DeleteData(
+                table: "Employees",
+                keyColumn: "Id",
+                keyValue: 21);
+
+            migrationBuilder.DeleteData(
+                table: "Employees",
+                keyColumn: "Id",
+                keyValue: 22);
+
+            migrationBuilder.DeleteData(
+                table: "Employees",
+                keyColumn: "Id",
+                keyValue: 23);
+
+            migrationBuilder.DeleteData(
+                table: "Employees",
+                keyColumn: "Id",
+                keyValue: 24);
+
+            migrationBuilder.AlterColumn<decimal>(
+                name: "Salary",
+                table: "Employees",
+                type: "decimal(18,2)",
+                nullable: false,
+                defaultValue: 0m,
+                oldClrType: typeof(decimal),
+                oldType: "decimal(18,2)",
+                oldNullable: true);
+
+            migrationBuilder.UpdateData(
+                table: "Employees",
+                keyColumn: "Id",
+                keyValue: 1,
+                columns: new[] { "Name", "Position", "Salary" },
+                values: new object[] { "John Doe", "Manager", 50000m });
+
+            migrationBuilder.UpdateData(
+                table: "Employees",
+                keyColumn: "Id",
+                keyValue: 2,
+                columns: new[] { "Name", "Position", "Salary", "Shift" },
+                values: new object[] { "Jane Smith", "Barista", 30000m, "Afternoon" });
+
+            migrationBuilder.UpdateData(
+                table: "Employees",
+                keyColumn: "Id",
+                keyValue: 3,
+                columns: new[] { "Name", "Position", "Salary", "Shift" },
+                values: new object[] { "Sam Brown", "Cashier", 25000m, "Evening" });
+        }
+    }
+}

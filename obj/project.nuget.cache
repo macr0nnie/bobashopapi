@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4nDbHuSwp10=",
+  "dgSpecHash": "gpE0HE63CKU=",
   "success": true,
-  "projectFilePath": "C:\\Users\\ronni\\Documents\\programming\\BobaShopProject_Parent\\bobashopapi\\BobaShopApi.csproj",
+  "projectFilePath": "C:\\Users\\ronni\\Documents\\programming\\BobaShopProject_Parent\\BobaShopApi\\BobaShopApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ronni\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\ronni\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

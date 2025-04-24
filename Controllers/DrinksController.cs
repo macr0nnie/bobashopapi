@@ -7,12 +7,10 @@ namespace BobaShopApi.Controllers
     public class DrinksController : ControllerBase
     {
         private readonly IDrinkRepository _drinkRepository;
-
         public DrinksController(IDrinkRepository drinkRepository)
         {
             _drinkRepository = drinkRepository;
         }
-
         [HttpGet]
         public async Task<IActionResult> GetAllDrinksAsync()
         {

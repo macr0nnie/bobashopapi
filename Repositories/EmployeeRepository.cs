@@ -16,7 +16,7 @@ namespace BobaShopApi.Repositories
         public async Task AddEmployeeAsync(Employee employee)
         {
             await _context.Database.ExecuteSqlInterpolatedAsync(
-                $"EXEC {StoredProcedures.AddEmployee} @Id = {employee.Id}, @Name = {employee.Name}, @Position = {employee.Position}, @Salary = {employee.Salary}, @Shift = {employee.Shift}");
+                $"EXEC {StoredProcedures.AddEmployee}  @Name = {employee.Name}, @Position = {employee.Position}, @Salary = {employee.Salary}, @Shift = {employee.Shift}");
         }
 
         public async Task DeleteEmployeeAsync(int id)
@@ -30,15 +30,16 @@ namespace BobaShopApi.Repositories
             return await _context.Employees
                 .FromSqlRaw($"EXEC {StoredProcedures.GetAllEmployees}")
                 .ToListAsync();
-        }       
-        public async Task<Employee?> GetEmployeeByIdAsync(int id)
+        }
+       
+        public async Task<Employee> GetEmployeeByIdAsync(int id)
         {
             var employees = await _context.Employees
                 .FromSqlRaw("EXEC get_employee_by_id @Id = {0}", id)
                 .AsNoTracking()
                 .ToListAsync();
 
-            return employees.FirstOrDefault();
+            return  employees.FirstOrDefault();
         }
 
         public async Task UpdateEmployeeAsync(Employee employee)
