@@ -4,8 +4,6 @@ using BobaShopApi.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
-
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -329,7 +327,5 @@ namespace BobaShopApi.Migrations
                 });
 #pragma warning restore 612, 618
         }
-
-        //add stored procedures
     }
 }

@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "m7eUmjuSSOGm8qFsjwhmhlMWd6vyf8Z4leVCyVvrxd8=",
+  "Source": "BobaShopApi",
+  "BasePath": "_content/BobaShopApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
