@@ -21,7 +21,8 @@ namespace BobaShopApi.Data
                 new Drink { Id = 4, Name = "Mango Smoothie", Price = 5.00m },
                 new Drink { Id = 5, Name = "Strawberry Lemonade", Price = 3.75m },
                 new Drink { Id = 6, Name = "The blood of my enemies", Price = 4.25m },
-                new Drink { Id = 7, Name = "Vegan Juice", Price = 20.8m }
+                new Drink { Id = 7, Name = "Vegan Juice", Price = 20.8m, ImageUrl = "https://example.com/vegan-juice.jpg" },
+                new Drink { Id = 8, Name = "Peach Oolong Tea", Price = 3.25m ,ImageUrl  = "https://www.bing.com/th/id/OIP.Gsl2sxyGt020l_KzrKqEHAHaFE?w=273&h=211&c=8&rs=1&qlt=90&o=6&dpr=2&pid=3.1&rm=2"}
             );
             //sample seed data for eomployees
             modelBuilder.Entity<Employee>().HasData(

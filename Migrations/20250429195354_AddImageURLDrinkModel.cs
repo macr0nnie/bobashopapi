@@ -10,6 +10,18 @@ namespace BobaShopApi.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+
+            migrationBuilder.Sql(@"
+        CREATE OR ALTER PROCEDURE AddDrink
+            @Name NVARCHAR(MAX),
+            @ImageUrl NVARCHAR(MAX),
+            @Price DECIMAL(18, 2)
+        AS
+        BEGIN
+            INSERT INTO Drinks (Name, ImageUrl, Price)
+            VALUES (@Name, @ImageUrl, @Price);
+        END
+    ");
             migrationBuilder.AddColumn<string>(
                 name: "ImageUrl",
                 table: "Drinks",
@@ -72,6 +84,18 @@ namespace BobaShopApi.Migrations
             migrationBuilder.DropColumn(
                 name: "ImageUrl",
                 table: "Drinks");
+
+            migrationBuilder.Sql(@"
+        CREATE OR ALTER PROCEDURE AddDrink
+            @Name NVARCHAR(MAX),
+            @ImageUrl NVARCHAR(MAX),
+            @Price DECIMAL(18, 2)
+        AS
+        BEGIN
+            INSERT INTO Drinks (Name, ImageUrl, Price)
+            VALUES (@Name, @ImageUrl, @Price);
+        END
+    ");
         }
     }
 }
