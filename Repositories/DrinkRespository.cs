@@ -23,7 +23,7 @@ namespace BobaShopApi
         public async Task AddDrinkAsync(Drink drink)
         {
             await _context.Database.ExecuteSqlInterpolatedAsync(
-                $"EXEC {StoredProcedures.AddDrink} @Name = {drink.Name}, @Price = {drink.Price}");
+                $"EXEC {StoredProcedures.AddDrink} @Name = {drink.Name}, @ImageUrl = {drink.ImageUrl}, @Price = {drink.Price}");
         }
         public Task DeleteDrinkAsync(int id)
         {
@@ -34,7 +34,7 @@ namespace BobaShopApi
         {
             return _context.Drinks
                 .FromSqlInterpolated
-                ($"EXEC {StoredProcedures.UpdateDrink} @Id={drink.Id}, @Name={drink.Name}, @Price={drink.Price}")
+                ($"EXEC {StoredProcedures.UpdateDrink} @Id={drink.Id}, @Name={drink.Name}, @ImageUrl={drink.ImageUrl}, @Price={drink.Price}")
                 .ToListAsync();
         }
         public Task<List<Drink>> GetAllDrinksAsync()
