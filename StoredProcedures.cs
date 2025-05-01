@@ -12,6 +12,7 @@ public static class StoredProcedures{
     public const string AddEmployee = "add_employee";
     public const string UpdateEmployee = "update_employee";
     public const string DeleteEmployee = "delete_employee";
+    public const string GetFilteredEmployees = "get_filtered_employees";
     //drink stored procedures
     public const string GetAllDrinks = "get_all_drinks";
     public const string GetDrinkById = "get_drink_by_id";

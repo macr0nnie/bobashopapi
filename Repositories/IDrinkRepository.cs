@@ -8,5 +8,6 @@ namespace BobaShopApi{
         Task AddDrinkAsync(Drink drink);
         Task UpdateDrinkAsync(Drink drink);
         Task DeleteDrinkAsync(int id);
+        
     }
 }

@@ -69,5 +69,12 @@ namespace BobaShopApi.Controllers
             await _employeeRepository.DeleteEmployeeAsync(id);
             return NoContent();
         } 
+        [HttpGet("filter")]
+        public async Task<IActionResult> GetFilteredEmployeesAsync([FromQuery] int? id, [FromQuery] string? name, [FromQuery] string? position, [FromQuery] decimal? salary, [FromQuery] string? shift)
+        {
+        
+            var employees = await _employeeRepository.GetFilteredEmployeesAsync(id, name, position, salary, shift);
+            return Ok(employees);  
+        }
     }
     }
