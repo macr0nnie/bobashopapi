@@ -42,4 +42,4 @@ namespace BobaShopApi
             return _context.Drinks.FromSqlRaw($"EXEC {StoredProcedures.GetAllDrinks}").ToListAsync();
         }
     }
-}
+} 
