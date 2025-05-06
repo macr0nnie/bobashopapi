@@ -31,10 +31,10 @@ namespace BobaShopApi.Migrations
                   (@Position IS NULL OR Position LIKE '%' + @Position + '%') AND
                   (@Salary IS NULL OR Salary = @Salary) AND
                   (@Shift IS NULL OR Shift LIKE '%' + @Shift + '%')
+                
 
             END
             ");
-
         }
 
         /// <inheritdoc />

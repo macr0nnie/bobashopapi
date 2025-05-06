@@ -19,4 +19,12 @@ public static class StoredProcedures{
     public const string AddDrink = "add_drink";
     public const string UpdateDrink = "update_drink";
     public const string DeleteDrink = "delete_drink";
+    //order stored procedures
+    public const string GetAllOrders = "get_all_orders";
+    public const string GetOrderById = "get_order_by_id";
+    public const string AddOrder = "add_order";
+    public const string UpdateOrder = "update_order";
+    public const string DeleteOrder = "delete_order";
+    public const string GetFilteredOrders = "get_filtered_orders";
+    public const string GetOrderDetails = "get_order_details";
 }

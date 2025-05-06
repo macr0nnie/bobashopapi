@@ -10,9 +10,25 @@ namespace BobaShopApi.Data
         public DbSet<Drink> Drinks { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; } // Added DbSet for OrderItems
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder); //what is this for?
+
+            // Configure relationships for Order and OrderItem
+            modelBuilder.Entity<Order>()
+                .HasMany(o => o.Items)
+                .WithOne(i => i.Order)
+                .HasForeignKey(i => i.OrderId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // Configure precision and scale for decimal properties
+            modelBuilder.Entity<Drink>().Property(d => d.Price).HasPrecision(18, 2);
+            modelBuilder.Entity<Employee>().Property(e => e.Salary).HasPrecision(18, 2);
+            modelBuilder.Entity<Order>().Property(o => o.TotalAmount).HasPrecision(18, 2);
+            modelBuilder.Entity<OrderItem>().Property(oi => oi.Price).HasPrecision(18, 2);
+
             //seed data
             modelBuilder.Entity<Drink>().HasData(
                 new Drink { Id = 7, Name = "Vegan Juice", Price = 20.8m, ImageUrl = "https://example.com/vegan-juice.jpg" },
