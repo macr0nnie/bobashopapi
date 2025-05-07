@@ -25,6 +25,6 @@ namespace BobaShopApi.Controllers
 
             var createdOrder = await _orderService.CreateOrderAsync(order);
             return CreatedAtAction(nameof(CreateOrder), new { id = createdOrder.Id }, createdOrder);
-        }
+    }
     }
 }

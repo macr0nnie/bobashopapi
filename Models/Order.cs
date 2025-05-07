@@ -11,11 +11,7 @@ namespace BobaShopApi.Models
         public string? CustomerName { get; set; }
         public decimal TotalAmount { get; set; }
         public DateTime OrderDate { get; set; }
-<<<<<<< HEAD
         public int DrinkId { get; set; }
         public List<OrderItem> Items { get; set; } = new List<OrderItem>();
-=======
-
->>>>>>> ff582f7fb65bea65210a65a516b6b3eff9030a44
     }
 }

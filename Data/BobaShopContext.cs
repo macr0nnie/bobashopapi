@@ -16,14 +16,14 @@ namespace BobaShopApi.Data
         {
             base.OnModelCreating(modelBuilder); //what is this for?
 
-            // Configure relationships for Order and OrderItem
+            // combine tables
             modelBuilder.Entity<Order>()
                 .HasMany(o => o.Items)
                 .WithOne(i => i.Order)
                 .HasForeignKey(i => i.OrderId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            // Configure precision and scale for decimal properties
+            // Configure precision and scale for decimal properties idk why chatpt said to do this
             modelBuilder.Entity<Drink>().Property(d => d.Price).HasPrecision(18, 2);
             modelBuilder.Entity<Employee>().Property(e => e.Salary).HasPrecision(18, 2);
             modelBuilder.Entity<Order>().Property(o => o.TotalAmount).HasPrecision(18, 2);

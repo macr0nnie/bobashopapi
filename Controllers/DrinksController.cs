@@ -13,7 +13,7 @@ namespace BobaShopApi.Controllers
         {
             _drinkService = drinkService;
         }
-
+        
         [HttpGet]
         public async Task<IActionResult> GetAllDrinksAsync()
         {
