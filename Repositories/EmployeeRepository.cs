@@ -1,6 +1,9 @@
 using BobaShopApi.Data;
 using BobaShopApi.Models;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace BobaShopApi.Repositories
 {
@@ -31,11 +34,10 @@ namespace BobaShopApi.Repositories
                 .FromSqlRaw($"EXEC {StoredProcedures.GetAllEmployees}")
                 .ToListAsync();
         }
-
         public async Task<Employee> GetEmployeeByIdAsync(int id)
         {
             var employees = await _context.Employees
-                .FromSqlRaw("EXEC get_employee_by_id @Id = {0}", id)
+                .FromSqlRaw($"EXEC {StoredProcedures.GetEmployeeById} @Id = {{0}}", id)
                 .AsNoTracking()
                 .ToListAsync();
 
@@ -50,7 +52,7 @@ namespace BobaShopApi.Repositories
         public async Task<List<Employee>> GetFilteredEmployeesAsync(int? id, string? name, string? position, decimal? salary, string? shift)
         {
             var employees = await _context.Employees
-                .FromSqlRaw("EXEC get_filtered_employees  @Id = {0}, @Name = {1}, @Position = {2}, @Salary = {3}, @Shift = {4}",
+                .FromSqlRaw($"EXEC {StoredProcedures.GetFilteredEmployees} @Id = {{0}}, @Name = {{1}}, @Position = {{2}}, @Salary = {{3}}, @Shift = {{4}}",
                     id, name, position, salary, shift)
                 .AsNoTracking()
                 .ToListAsync();

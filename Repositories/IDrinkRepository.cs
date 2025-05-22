@@ -1,6 +1,9 @@
 using BobaShopApi.Models;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
-namespace BobaShopApi{
+namespace BobaShopApi.Repositories
+{
     public interface IDrinkRepository
     {
         Task<List<Drink>> GetAllDrinksAsync();

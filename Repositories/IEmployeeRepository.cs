@@ -1,4 +1,7 @@
 using BobaShopApi.Models;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
 namespace BobaShopApi.Repositories
 {
     public interface IEmployeeRepository

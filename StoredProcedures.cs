@@ -1,5 +1,7 @@
 
-public static class StoredProcedures{
+namespace BobaShopApi
+{
+public static class StoredProcedures {
     //order class stored procedures
     public const string GetCustomerOrders = "get_customer_orders";
     public const string UpdateOrderStatus = "update_order_status";

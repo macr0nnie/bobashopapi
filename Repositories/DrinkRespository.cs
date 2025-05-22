@@ -1,8 +1,11 @@
 using BobaShopApi.Models;
 using BobaShopApi.Data;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
-namespace BobaShopApi
+namespace BobaShopApi.Repositories
 {
     public class DrinkRepository : IDrinkRepository
     {
